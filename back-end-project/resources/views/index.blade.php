@@ -10,7 +10,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Test</h1>
+    <h1>Movie</h1>
 
     @dump($movies)
     @foreach($movies as $movie)
@@ -22,14 +22,13 @@
             <p>{{$movie['release_date']}}</p>
         </div>
     @endforeach
-    <?php
-    print_r($movies)
-    ?>
+
+
+    @dump($popular)
+    @foreach($popular as $popularMovie)
+        <h1>{{$popularMovie['title']}}</h1>
+        <img src="https://image.tmdb.org/t/p/w500{{$popularMovie['poster_path']}}"/>
+        <p>{{$popularMovie['release_date']}}</p>
+    @endforeach
 </body>
 </html>
-
-<style>
-    .movies_container{
-        background-color: #4a5568;
-    }
-</style>
