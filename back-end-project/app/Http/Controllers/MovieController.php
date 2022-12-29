@@ -15,9 +15,11 @@ class MovieController extends Controller
     {
         $response = Http::get('https://api.themoviedb.org/3/movie/top_rated?api_key=4cce21b1f26a0bd20a4ffa0ac80880c8&language=en-US&page=1');
         $popular = Http::get('https://api.themoviedb.org/3/movie/popular?api_key=4cce21b1f26a0bd20a4ffa0ac80880c8&language=en-US&page=1');
+        $genre = Http::get('https://api.themoviedb.org/3/genre/movie/list?api_key=4cce21b1f26a0bd20a4ffa0ac80880c8&language=en-US');
 
         $response = $response->json()['results'];
         $popular = $popular->json()['results'];
+        $genre = $genre->json()['genres'];
         return view('index', [
             'movies' => $response,
             'popular' => $popular,
