@@ -7,29 +7,26 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     @vite('resources/css/app.css')
-    <title>Document</title>
+    <title>Sky Blue Movies</title>
 </head>
 <body>
-    <h1>Test</h1>
+    <h1 class="font-bold text-[5rem] text-center">Sky Blue Movies</h1>
 
-    @dump($movies)
+    <div class="flex flex-wrap justify-between">
+    <!-- @dump($movies) -->
     @foreach($movies as $movie)
-        <div class="movies_container">
-            <h1>{{$movie['title']}}</h1>
-            <h2 class="font-bold text-amber-600">{{$movie['original_title']}}</h2>
-            <img src="https://image.tmdb.org/t/p/w500{{$movie['poster_path']}}"/>
-            <p>{{$movie['overview']}}</p>
-            <p>{{$movie['release_date']}}</p>
+        <div class="card bg-gray-200 w-[19%] gap-4 mb-4">
+            <h2 class="font-bold text-[2rem]">Titre du film : {{$movie['title']}}</h2>
+            <h2 class="font-bold text-amber-600 text-[2rem]">Titre original : {{$movie['original_title']}}</h2>
+            <img class="w-[100%] h-auto" src="https://image.tmdb.org/t/p/w500{{$movie['poster_path']}}"/>
+            <!-- <p>{{$movie['overview']}}</p> -->
+            <p class="font-bold">Date de sortie : {{$movie['release_date']}}</p>
         </div>
     @endforeach
+    </div>
+
     <?php
-    print_r($movies)
+
     ?>
 </body>
 </html>
-
-<style>
-    .movies_container{
-        background-color: #4a5568;
-    }
-</style>
