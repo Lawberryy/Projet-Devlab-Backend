@@ -13,16 +13,21 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $response = Http::get('https://api.themoviedb.org/3/movie/top_rated?api_key=4cce21b1f26a0bd20a4ffa0ac80880c8&language=en-US&page=1');
-        $popular = Http::get('https://api.themoviedb.org/3/movie/popular?api_key=4cce21b1f26a0bd20a4ffa0ac80880c8&language=en-US&page=1');
-        $genre = Http::get('https://api.themoviedb.org/3/genre/movie/list?api_key=4cce21b1f26a0bd20a4ffa0ac80880c8&language=en-US');
+        //$response = Http::get('https://api.themoviedb.org/3/movie/top_rated?api_key=4cce21b1f26a0bd20a4ffa0ac80880c8&language=en-US&page=1');
+        $popularMovies = Http::get('https://api.themoviedb.org/3/movie/popular?api_key=4cce21b1f26a0bd20a4ffa0ac80880c8&language=en-US&page=1')
+            ->get()
+            ->json()['results'];
+        //$genre = Http::get('https://api.themoviedb.org/3/genre/movie/list?api_key=4cce21b1f26a0bd20a4ffa0ac80880c8&language=en-US');
 
-        $response = $response->json()['results'];
-        $popular = $popular->json()['results'];
-        $genre = $genre->json()['genres'];
+        //$response = $response->json()['results'];
+        //$popularMovies = $popularMovies->json()['results'];
+        //$genre = $genre->json()['genres'];
+
+        dump($popularMovies);
+
         return view('index', [
-            'movies' => $response,
-            'popular' => $popular,
+            //'movies' => $response,
+            'popularMovies' => $popularMovies,
         ]);
     }
 

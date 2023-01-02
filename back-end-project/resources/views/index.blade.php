@@ -12,23 +12,21 @@
 <body>
     <h1>Movie</h1>
 
-    @dump($movies)
-    @foreach($movies as $movie)
+    @foreach($popularMovies as $popularMovie)
         <div class="movies_container">
-            <h1>{{$movie['title']}}</h1>
-            <h2 class="font-bold text-amber-600">{{$movie['original_title']}}</h2>
-            <img src="https://image.tmdb.org/t/p/w500{{$movie['poster_path']}}"/>
-            <p>{{$movie['overview']}}</p>
-            <p>{{$movie['release_date']}}</p>
+            <h1>{{$popularMovie['title']}}</h1>
+            <h2 class="font-bold text-amber-600">{{$popularMovie['original_title']}}</h2>
+            <img src="https://image.tmdb.org/t/p/w500{{$popularMovie['poster_path']}}"/>
+            <p>{{$popularMovie['overview']}}</p>
+            <p>{{$popularMovie['release_date']}}</p>
         </div>
     @endforeach
 
 
-    @dump($popular)
-    @foreach($popular as $popularMovie)
+    <!-- @foreach($popular as $popularMovie)
         <h1>{{$popularMovie['title']}}</h1>
         <img src="https://image.tmdb.org/t/p/w500{{$popularMovie['poster_path']}}"/>
         <p>{{$popularMovie['release_date']}}</p>
-    @endforeach
+    @endforeach -->
 </body>
 </html>
