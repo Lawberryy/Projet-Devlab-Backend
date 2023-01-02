@@ -20,9 +20,17 @@ class MovieController extends Controller
         $response = $response->json()['results'];
         $popular = $popular->json()['results'];
         $genre = $genre->json()['genres'];
-        return view('index', [
+
+        $test =  [
+            'name' => 'Tutututu',
+            'page' => 'oui',
+        ];
+
+        return view('welcome', [
+            'testing' => $test,
             'movies' => $response,
             'popular' => $popular,
+            'genre' => $genre,
         ]);
     }
 
