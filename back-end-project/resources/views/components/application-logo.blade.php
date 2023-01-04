@@ -1,1 +1,1 @@
-<img src="/img/skyblue-2-removebg-preview.png" alt="logo skyblue" class="w-96">
+<img src="/img/skyblue-2-removebg-preview.png" alt="logo skyblue" class="w-60">
