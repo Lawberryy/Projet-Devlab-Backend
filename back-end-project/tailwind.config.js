@@ -13,6 +13,12 @@ module.exports = {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
+
+            colors: {
+                'light-blue-main': '#00AEF0',
+                'dark-blue-main': '#012245',
+                'mid-blue-main': '#263C53',
+            },
         },
     },
 

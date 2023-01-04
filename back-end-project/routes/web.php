@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 
 
-//Route::get('/', [MovieController::class, 'index'])->middleware(['auth', 'verified']);
+Route::get('/', [MovieController::class, 'index']);
 
 
 Route::get('/dashboard', function () {
