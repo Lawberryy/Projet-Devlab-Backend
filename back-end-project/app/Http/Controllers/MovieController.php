@@ -13,23 +13,24 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $response = Http::get('https://api.themoviedb.org/3/movie/top_rated?api_key=4cce21b1f26a0bd20a4ffa0ac80880c8&language=en-US&page=1');
-        $popular = Http::get('https://api.themoviedb.org/3/movie/popular?api_key=4cce21b1f26a0bd20a4ffa0ac80880c8&language=en-US&page=1');
-        $genres = Http::get('https://api.themoviedb.org/3/genre/movie/list?api_key=4cce21b1f26a0bd20a4ffa0ac80880c8&language=en-US');
+        $topRated = Http::get('https://api.themoviedb.org/3/movie/top_rated?api_key=4cce21b1f26a0bd20a4ffa0ac80880c8&language=en-US&page=1');
+        $popular = Http::get('https://api.themoviedb.org/3/movie/popular?api_key=4cce21b1f26a0bd20a4ffa0ac80880c8&language=en-US');
+        $genresArray = Http::get('https://api.themoviedb.org/3/genre/movie/list?api_key=4cce21b1f26a0bd20a4ffa0ac80880c8&language=en-US');
 
-        $response = $response->json()['results'];
+        $topRated = $topRated->json()['results'];
         $popular = $popular->json()['results'];
-        $genres = $genres->json()['genres'];
+        $genresArray = $genresArray->json()['genres'];
 
-        /*$test =  [
-            'name' => 'Tutututu',
-            'page' => 'oui',
-        ]; */
+        $genres = collect($genresArray)->mapWithKeys(function ($genre) {
+            return [$genre['id'] => $genre['name']];
+        });
+
+        //dump($genres);
 
         return view('welcome', [
-            //'testing' => $test,
-            'movies' => $response,
+            'movies' => $topRated,
             'popular' => $popular,
+            'genresArray' => $genresArray,
             'genres' => $genres,
         ]);
     }
@@ -63,10 +64,16 @@ function store(Request $request)
  * @param int $id
  * @return \Illuminate\Http\Response
  */
-public
-function show($id)
+public function show($id)
 {
-    //
+    $movie = Http::get('https://api.themoviedb.org/3/movie/'.$id.'?append_to_response=credits,videos'.'&api_key=4cce21b1f26a0bd20a4ffa0ac80880c8&language=en-US&page=1');
+    $movie = $movie->json();
+
+    //dump($movie);
+
+    return view('layouts/show', [
+        'movie' => $movie,
+    ]);
 }
 
 /**
