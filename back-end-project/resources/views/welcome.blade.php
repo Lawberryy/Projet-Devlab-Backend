@@ -41,6 +41,7 @@
                         @foreach($genresArray as $genre)
                                 <span class="cursor-pointer text-[15px]">{{$genre['name']}}</span>
                         @endforeach
+
                     </div>
                 </div>
 
@@ -65,6 +66,16 @@
                                         <!-- la condition if permet d'ajouter une virgule entre chaque genre -->
                                     @endforeach
                                 </span>
+                                @auth
+                                    <form action="#">
+                                        <label>AJouter à l'album</label>
+                                        <select name="album" class="bg-emerald-500">
+                                            <option value="visionne">Visionnés</option>
+                                            <option value="envie">Liste d'envie</option>
+                                        </select>
+                                        <!-- <input type="submit" value="Envoyer" /> -->
+                                    </form>
+                                @endauth
                             </div>
                         @endforeach
                     </div>

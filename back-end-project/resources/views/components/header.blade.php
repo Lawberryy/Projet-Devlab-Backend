@@ -16,10 +16,35 @@
             <!-- <div wire:loading class="spinner top-0 right-0 mr-4 mt-3"></div> -->
 
         </div>
+        @auth
         <div class="md:ml-4 mt-3 md:mt-0">
-            <a href="#">
+            <a href="{{ url('/albums') }}">
                 <img src="/img/avatar.jpg" alt="avatar" class="rounded-full w-8 h-8">
             </a>
         </div>
+        @endauth
+
+            @if (Route::has('login'))
+                @auth
+                <div>
+                    <form method="POST" action="{{ route('logout') }}" class="bg-emerald-500">
+                        @csrf
+
+                        <x-dropdown-link :href="route('logout')"
+                                         onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                            {{ __('Log Out') }}
+                        </x-dropdown-link>
+                    </form>
+                </div>
+
+                    @else
+                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline ml-5">Log in</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                        @endif
+                    @endauth
+            @endif
     </div>
 </header>
