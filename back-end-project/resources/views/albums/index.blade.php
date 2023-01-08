@@ -21,14 +21,21 @@
                                 <tr>
                                 <td class="px-6 py-4 whitespace-nowrap">{{$album->id}}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{$album->title}}</td>
-                                <td class="px-6 py-4 text-right text-sm flex justify-center">Edit Delete</td>
+                                    <td class="flex justify-center">
+                                    <form method="POST" action="{{route('albums.destroy', $album->id)}}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest bg-light-blue-main hover:bg-darker-blue-main focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150'">Supprimer</button>
+
+                                    </form>
+                                    </td>
                                 </tr>
                             @endforeach
 
                             <!-- More items... -->
                             </tbody>
                         </table>
-                        <div class="m-2 p-2">Pagination</div>
+
                     </div>
                 </div>
             </div>

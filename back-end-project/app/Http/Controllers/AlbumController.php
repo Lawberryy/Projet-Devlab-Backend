@@ -95,8 +95,10 @@ class AlbumController extends Controller
      * @return \Illuminate\Http\Response
      */
     public
-    function destroy($id)
+    function destroy(Album $album)
     {
-        //
+        $album->delete();
+
+        return redirect()->back();
     }
 }
