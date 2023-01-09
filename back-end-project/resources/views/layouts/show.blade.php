@@ -15,7 +15,7 @@
 
         <div class="movie-info mt-14 grid grid-cols-1 md:grid-cols-[30%_70%] pb-16">
             <div class="px-6">
-                <img src="{{ 'https://image.tmdb.org/t/p/w500'.$movie['poster_path'] }}" alt="movie-poster" class="w-[100%] sm:w-[70%] md:w-[100%]">
+                <img src="{{ 'https://image.tmdb.org/t/p/w500'.$movie['poster_path'] }}" alt="movie-poster" class="w-[100%] sm:w-[70%] sm:ml-[15%] md:w-[100%]">
             </div>
             <div class="pr-6 pl-10">
                 <h1 class="font-bold text-light-blue-main uppercase text-3xl">{{ $movie['title'] }}</h1>
@@ -56,10 +56,10 @@
 
     <div class="movie-cast px-6 pb-10">
         <h2 class="font-bold text-xl mb-6">Cast</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+        <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5">
             @foreach ($movie['credits']['cast'] as $cast)
-                @if($loop->index < 5)
-                    <!-- permet de limiter le nombre de loop à 5, càd les 5 premiers actors -->
+                @if($loop->index < 6)
+                    <!-- permet de limiter le nombre de loop à 6, càd les 6 premiers acteurs -->
                     <div class="">
                         <img src="https://image.tmdb.org/t/p/w500{{ $cast['profile_path']}}" alt="actor">
                         <div class="mt-2">
