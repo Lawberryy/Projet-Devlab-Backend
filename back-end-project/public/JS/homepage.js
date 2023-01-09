@@ -1,7 +1,7 @@
 // Homepage
 
 const base_URL = 'https://api.themoviedb.org/3';
-const API_key = 'api_key=4cce21b1f26a0bd20a4ffa0ac80880c8';
+const API_key = 'api_key=4cce21b1f26a0bd20a4ffa0ac80880c8'; // key générée sur le site TMDB
 const API_URL = base_URL + '/discover/movie?&language=en-US&sort_by=popularity.desc&' + API_key;
 const search_URL = base_URL + '/search/movie?' + API_key;
 const img_URL = 'https://image.tmdb.org/t/p/w500';

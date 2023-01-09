@@ -96,7 +96,6 @@ public function show($id)
         });
 
 
-
         return view('layouts/discover', [
             'moviesByGenre' => $moviesByGenre,
             'genresArray' => $genresArray,

@@ -23,7 +23,7 @@
                     <h2 class="uppercase font-bold text-md md:text-xl text-light-blue-main">Categories</h2>
                     <div id="tags" class="flex flex-col gap-y-2 mt-6 sticky top-0 h-[1O0vh]">
                         @foreach($genresArray as $genre)
-                            <a href="{{ route('genre.movies.display', $genre['id']) }}" target="_blank"><span id="{{$genre['id']}}" class="tag cursor-pointer text-[15px]">{{$genre['name']}}</span></a>
+                            <a href="{{ route('genre.movies.display', $genre['id']) }}" target="_blank"><span id="{{$genre['id']}}" class="tag cursor-pointer text-[15px] hover:text-emerald-400">{{$genre['name']}}</span></a>
                         @endforeach
                     </div>
                 </div>

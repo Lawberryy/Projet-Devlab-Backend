@@ -7,11 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     @vite('resources/css/app.css')
-    <title> - SkyBlue Movie</title>
+    <title>Category page - SkyBlue Movie</title>
 </head>
 <body class="bg-mid-blue-main text-gray-50">
 
-<!-- @dump($moviesByGenre); -->
+<!-- @dump($moviesByGenre);
+@dump($genres); -->
 
 <x-header></x-header>
 
