@@ -18,8 +18,8 @@
         </div>
         @auth
         <div class="md:ml-4 mt-3 md:mt-0">
-            <a href="{{ url('/albums') }}">
-                <img src="/img/avatar.jpg" alt="avatar" class="rounded-full w-8 h-8">
+            <a href="{{ url('/albums') }}" class="text-sm text-gray-700 dark:text-gray-500 underline ml-5 mr-5">
+                Profil
             </a>
         </div>
         @endauth

@@ -61,6 +61,10 @@ class AlbumController extends Controller
      */
     public function show($id)
     {
+
+        return view('albums/display', [
+            'albums' => $id,
+        ]);
     }
 
     /**
