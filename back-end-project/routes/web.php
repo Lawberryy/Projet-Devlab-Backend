@@ -22,7 +22,7 @@ Route::get('/', function () {
 
 Route::get('/', [MovieController::class, 'index'])->name('movies.index');
 Route::get('/movies/{movie}', [MovieController::class, 'show'])->name('movies.show');
-
+Route::get('/discover/genre/{moviesByGenre}', [MovieController::class, 'display'])->name('genre.movies.display');
 
 
 Route::get('/dashboard', function () {

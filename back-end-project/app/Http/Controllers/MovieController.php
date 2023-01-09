@@ -14,7 +14,7 @@ class MovieController extends Controller
     public function index()
     {
         $topRated = Http::get('https://api.themoviedb.org/3/movie/top_rated?api_key=4cce21b1f26a0bd20a4ffa0ac80880c8&language=en-US&page=1');
-        $popular = Http::get('https://api.themoviedb.org/3/movie/popular?api_key=4cce21b1f26a0bd20a4ffa0ac80880c8&language=en-US');
+        $popular = Http::get('https://api.themoviedb.org/3/discover/movie?api_key=4cce21b1f26a0bd20a4ffa0ac80880c8&language=en-US&sort_by=popularity.desc');
         $genresArray = Http::get('https://api.themoviedb.org/3/genre/movie/list?api_key=4cce21b1f26a0bd20a4ffa0ac80880c8&language=en-US');
 
         $topRated = $topRated->json()['results'];
@@ -25,7 +25,7 @@ class MovieController extends Controller
             return [$genre['id'] => $genre['name']];
         });
 
-        //dump($genres);
+        dump($popular);
 
         return view('welcome', [
             'movies' => $topRated,
@@ -71,10 +71,39 @@ public function show($id)
 
     //dump($movie);
 
+
     return view('layouts/show', [
         'movie' => $movie,
     ]);
 }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function display($id)
+    {
+        $moviesByGenre = Http::get('https://api.themoviedb.org/3/discover/movie?language=en-US&sort_by=popularity.desc&with_genres='.$id.'&api_key=4cce21b1f26a0bd20a4ffa0ac80880c8&');
+        $moviesByGenre = $moviesByGenre->json('results');
+
+        $genresArray = Http::get('https://api.themoviedb.org/3/genre/movie/list?api_key=4cce21b1f26a0bd20a4ffa0ac80880c8&language=en-US');
+        $genresArray = $genresArray->json('genres');
+
+        $genres = collect($genresArray)->mapWithKeys(function ($genre) {
+            return [$genre['id'] => $genre['name']];
+        });
+
+
+
+        return view('layouts/discover', [
+            'moviesByGenre' => $moviesByGenre,
+            'genresArray' => $genresArray,
+            'genres' => $genres,
+        ]);
+    }
+
 
 /**
  * Show the form for editing the specified resource.

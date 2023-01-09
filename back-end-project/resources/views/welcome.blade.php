@@ -13,22 +13,6 @@
 
     <body class="bg-mid-blue-main">
 
-        <!-- <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif -->
-
-
         <x-header></x-header>
 
         <main class="text-gray-50 mt-12">
@@ -37,22 +21,22 @@
             <div class="mt-4 grid grid-cols-[30%_70%] md:grid-cols-[18%_82%] pt-12">
                 <div class="border-r-2 border-gray-800 col-start-1 col-end-2 text-center">
                     <h2 class="uppercase font-bold text-md md:text-xl text-light-blue-main">Categories</h2>
-                    <div class="flex flex-col gap-y-2 mt-6 sticky top-0 h-[1O0vh]">
+                    <div id="tags" class="flex flex-col gap-y-2 mt-6 sticky top-0 h-[1O0vh]">
                         @foreach($genresArray as $genre)
-                                <span class="cursor-pointer text-[15px]">{{$genre['name']}}</span>
+                            <a href="{{ route('genre.movies.display', $genre['id']) }}" target="_blank"><span id="{{$genre['id']}}" class="tag cursor-pointer text-[15px]">{{$genre['name']}}</span></a>
                         @endforeach
                     </div>
                 </div>
 
-                <div class="movies_container col-start-2 col-end-3 px-6 mb-10">
-                    <h2 class="uppercase font-bold text-md md:text-xl text-light-blue-main">Popular movies</h2>
-                    <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+                <!-- div qui affiche les films les plus populaires en ce moment -->
+                <div class="col-start-2 col-end-3 px-6 mb-10">
+                    <h2 id="title-popular" class="uppercase font-bold text-md md:text-xl text-light-blue-main">Popular movies</h2>
+                    <div id="div-by-default" class="hidden mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
                         @foreach($popular as $popularMovie)
-                            <div class="movie_container">
+                            <div class="movie_card">
                                 <a href="{{ route('movies.show', $popularMovie['id']) }}"><img src="https://image.tmdb.org/t/p/w500{{$popularMovie['poster_path']}}" alt="movie-poster"/></a>
                                 <a href="{{ route('movies.show', $popularMovie['id']) }}"><h3 class="text-light-blue-main text-xl hover:text-gray-50">{{$popularMovie['title']}}</h3></a>
-                                <!-- <h4 class="font-bold">{{$popularMovie['original_title']}}</h4> -->
-                                <!-- <p>{{$popularMovie['overview']}}</p> -->
+
                                 <div class="flex">
                                     <span class="text-sm">{{$popularMovie['release_date']}}</span>
                                     <span class="mx-2">|</span>
@@ -62,16 +46,24 @@
                                 <span class="text-sm">
                                     @foreach($popularMovie['genre_ids'] as $genre)
                                         {{ $genres->get($genre) }} @if (!$loop->last), @endif
-                                        <!-- la condition if permet d'ajouter une virgule entre chaque genre -->
+                                        <!-- la condition if permet d'ajouter une virgule entre chaque genre (loop) -->
                                     @endforeach
                                 </span>
                             </div>
                         @endforeach
                     </div>
+
+                    <!-- div qui contiendra l'affichage des films par recherche -->
+                        <div id="titleSearch"></div>
+                        <div id="movies_container" class="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+                        </div>
+
                 </div>
             </div>
         </main>
 
         <x-footer></x-footer>
+
+    <script src="/JS/homepage.js"></script>
     </body>
 </html>

@@ -2,10 +2,11 @@
     <a href="/"><img src="/img/logo-skyblue.png" alt="logo skyblue" class="w-20 md:w-32"></a>
 
     <div class="flex flex-row items-center">
-        <div class="relative mt-3 md:mt-0">
-            <!-- <div wire:initial-data="{&quot;id&quot;:&quot;nf3NquTDS70quIVSQP9l&quot;,&quot;name&quot;:&quot;search-dropdown&quot;,&quot;redirectTo&quot;:false,&quot;events&quot;:[],&quot;eventQueue&quot;:[],&quot;dispatchQueue&quot;:[],&quot;data&quot;:{&quot;search&quot;:&quot;&quot;},&quot;children&quot;:[],&quot;checksum&quot;:&quot;6ff16f2bd9092b18e1539ea00f5da20e1ae0d0c560690ff48f89b4e2950de2f3&quot;}" wire:id="nf3NquTDS70quIVSQP9l" class="relative mt-3 md:mt-0" x-data="{ isOpen: true }" @click.away="isOpen = false"> -->
+        <form id="SearchBar" class="relative mt-3 md:mt-0">
+
             <input
                 type="text"
+                id="search"
                 class="bg-gray-800 text-white text-sm rounded-full w-52 md:w-64 px-4 pl-8 py-1 focus:outline-none focus:shadow-outline"
                 placeholder="Search a movie"
             >
@@ -15,7 +16,7 @@
 
             <!-- <div wire:loading class="spinner top-0 right-0 mr-4 mt-3"></div> -->
 
-        </div>
+        </form>
         <div class="md:ml-4 mt-3 md:mt-0">
             <a href="#">
                 <img src="/img/avatar.jpg" alt="avatar" class="rounded-full w-8 h-8">
