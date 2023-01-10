@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('/albums', AlbumController::class)->middleware('auth');
 
+
 Route::get('/create',[AlbumController::class, 'addAlbum']);
 
 

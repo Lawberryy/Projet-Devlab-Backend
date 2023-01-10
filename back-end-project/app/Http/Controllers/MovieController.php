@@ -33,6 +33,7 @@ class MovieController extends Controller
             'genresArray' => $genresArray,
             'genres' => $genres,
         ]);
+        
     }
 
 /**

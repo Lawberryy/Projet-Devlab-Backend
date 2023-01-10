@@ -13,5 +13,10 @@ class AlbumMovies extends Model
 
     //protected $fillable = ['album_id', 'movie_id'];
 
+    function albums(){
+        return $this->belongsToMany(Album::class);
+    }
 
 }
+
+

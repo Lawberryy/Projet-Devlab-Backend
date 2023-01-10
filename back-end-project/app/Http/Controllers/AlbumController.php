@@ -64,11 +64,12 @@ class AlbumController extends Controller
 
         $movies = AlbumMovies::where('album_id', $id)->get();
 
+        /*
         foreach ($movies as $movie) {
             $response = Http::get('https://api.themoviedb.org/3/movie/' . $movie->movie_id . '?&api_key=4cce21b1f26a0bd20a4ffa0ac80880c&language=en-US')->json();
             $movie->title = $response['original_title'];
             $movie->poster_path = $response['poster_path'];
-        }
+        */
         return view('layouts/album',[
             'album' => Album::where('id',$id)->get()[0],
             'movies' =>$movies,

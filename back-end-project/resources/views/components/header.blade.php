@@ -1,5 +1,5 @@
 <header class="flex border-b border-gray-800 justify-between px-3 md:px-6 bg-mid-blue-main">
-    <a href="/"><img src="/img/logo-skyblue.png" alt="logo skyblue" class="w-20 md:w-32"></a>
+    <a href="/"><img src="/img/logo-skyblue.png" alt="logo skyblue" class="w-20 md:w-32 bg-white px-2 rounded"></a>
 
     <div class="flex gap-x-3">
         <div class="flex flex-row items-center mr-5">
@@ -50,7 +50,7 @@
                                 </a>
                             </div>
                             <div class="flex items-center">
-                                <a href="{{ route('register') }}" class="text-sm text-gray-700 dark:text-gray-500 underline bg-emerald-500 p-1 sm:p-2">Register</a>
+                                <a href="{{ route('register') }}" class="text-sm underline bg-emerald-500 p-1 sm:p-2 no-underline text-white">Register</a>
                             </div>
                         @endif
                     @endauth
