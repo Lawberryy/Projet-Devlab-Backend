@@ -15,7 +15,15 @@ CREATE TABLE `albums` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `public` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+DROP TABLE IF EXISTS `albums_movies`;
+CREATE TABLE `albums_movies` (
+  `album_id` bigint unsigned NOT NULL,
+  `movie_id` bigint unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 DROP TABLE IF EXISTS `failed_jobs`;
 CREATE TABLE `failed_jobs` (
@@ -75,7 +83,7 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 DROP TABLE IF EXISTS `users_albums`;
 CREATE TABLE `users_albums` (
@@ -88,13 +96,19 @@ CREATE TABLE `users_albums` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `albums` (`id`, `title`, `created_at`, `updated_at`, `public`) VALUES
-(7, 'kirby', '2023-01-09 13:47:15', '2023-01-09 13:47:15', 0);
+(1, 'Liste d\'envies', '2023-01-10 00:43:31', '2023-01-10 00:43:31', 1);
 INSERT INTO `albums` (`id`, `title`, `created_at`, `updated_at`, `public`) VALUES
-(9, 'Visionnés', '2023-01-10 00:43:09', '2023-01-10 00:43:09', 1);
+(2, 'Visionés', '2023-01-10 00:44:20', '2023-01-10 00:44:20', 0);
 INSERT INTO `albums` (`id`, `title`, `created_at`, `updated_at`, `public`) VALUES
-(10, 'Liste d\'envies', '2023-01-10 00:43:31', '2023-01-10 00:43:31', 1);
+(3, 'patate', '2023-01-10 08:29:32', '2023-01-10 08:29:32', NULL);
 INSERT INTO `albums` (`id`, `title`, `created_at`, `updated_at`, `public`) VALUES
-(11, 'Favoris', '2023-01-10 00:44:20', '2023-01-10 00:44:20', 0);
+(15, 'allo', '2023-01-10 08:38:00', '2023-01-10 08:38:00', NULL);
+
+INSERT INTO `albums_movies` (`album_id`, `movie_id`, `created_at`, `updated_at`) VALUES
+(2, 76600, NULL, NULL);
+INSERT INTO `albums_movies` (`album_id`, `movie_id`, `created_at`, `updated_at`) VALUES
+(2, 315162, NULL, NULL);
+
 
 
 
@@ -122,8 +136,11 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (3, 'HL', 'hl@gmail.com', NULL, '$2y$10$jjbKScmvxVc2U5wgxrrjxe51ChLZy.82sa8Nd33xf7KeK/4Rfdhi6', NULL, '2023-01-07 18:36:02', '2023-01-07 18:36:02');
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(4, 'Shodaimet', 'sho@gmail.com', NULL, '$2y$10$2FqVKYKyVO.GlP6upAvABe4xXxPJ9SzGfw1QMe9egyYb5h8pQo.2C', NULL, '2023-01-08 17:47:22', '2023-01-08 17:48:10');
+(4, 'Shodaimet', 'sho@gmail.com', NULL, '$2y$10$2FqVKYKyVO.GlP6upAvABe4xXxPJ9SzGfw1QMe9egyYb5h8pQo.2C', NULL, '2023-01-08 17:47:22', '2023-01-08 17:48:10'),
+(5, 'Lalala', 'lala@mail.com', NULL, '$2y$10$3iJKWiizZJD.fcHIRqSpF.Q4awQB7hKj/CwnDjlL/WgLuMm4nZ55i', NULL, '2023-01-10 08:28:43', '2023-01-10 08:28:43');
 
+INSERT INTO `users_albums` (`users_id`, `albums_id`) VALUES
+(1, 2);
 
 
 
