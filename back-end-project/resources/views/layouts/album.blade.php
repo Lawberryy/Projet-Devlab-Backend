@@ -8,5 +8,7 @@
 
         </div>
 
+
+        @dump($movies)
     </div>
 </x-app-layout>

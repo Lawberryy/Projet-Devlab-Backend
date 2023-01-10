@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Album;
 use App\Models\User;
+use App\Models\AlbumMovies;
 
 
 class AlbumController extends Controller
@@ -44,14 +45,13 @@ class AlbumController extends Controller
         return redirect()->route('albums.index');
     }
 
-    /*
-    public function addAlbum(){
+    public function showContent() {
 
-        $albums = [
-            [""]
-        ];
-        Album::insert($albums);
-    }*/
+        return $this->belongsTo(Album::class);
+        return $this->hasMany(Album::class);
+
+
+    }
 
     /**
      * Display the specified resource.
@@ -61,9 +61,20 @@ class AlbumController extends Controller
      */
     public function show($id)
     {
+
+        $movies = AlbumMovies::where('album_id', $id)->get();
+
+        foreach ($movies as $movie) {
+            $response = Http::get('https://api.themoviedb.org/3/movie/' . $movie->movie_id . '?&api_key=4cce21b1f26a0bd20a4ffa0ac80880c&language=en-US')->json();
+            $movie->title = $response['original_title'];
+            $movie->poster_path = $response['poster_path'];
+        }
         return view('layouts/album',[
             'album' => Album::where('id',$id)->get()[0],
+            'movies' =>$movies,
         ]);
+
+        @dump($movies);
     }
 
     /**
