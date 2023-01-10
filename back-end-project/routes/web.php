@@ -40,4 +40,7 @@ Route::resource('/albums', AlbumController::class)->middleware('auth');
 
 Route::get('/create',[AlbumController::class, 'addAlbum']);
 
+
+Route::get('/album/{album_id}', [\App\Http\Controllers\AlbumController::class,'show'] );
+
 require __DIR__.'/auth.php';

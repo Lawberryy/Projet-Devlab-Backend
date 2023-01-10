@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('title');
             /*$table->string('user_id');*/
             $table->timestamps();
+            $table->boolean('public');
         });
     }
 

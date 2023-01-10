@@ -15,7 +15,7 @@
 
         <div class="movie-info mt-14 grid grid-cols-1 md:grid-cols-[30%_70%] pb-16">
             <div class="px-6">
-                <img src="{{ 'https://image.tmdb.org/t/p/w500'.$movie['poster_path'] }}" alt="movie-poster" class="w-[100%] sm:w-[70%] sm:ml-[15%] md:w-[100%]">
+                <img src="{{ 'https://image.tmdb.org/t/p/w500'.$movie['poster_path'] }}" alt="movie-poster" class="w-[100%] sm:w-[70%] sm:ml-[15%] md:ml-0 md:w-[100%]">
             </div>
             <div class="pr-6 pl-10">
                 <h1 class="font-bold text-light-blue-main uppercase text-3xl">{{ $movie['title'] }}</h1>
@@ -51,6 +51,18 @@
                         @endforeach
                     </div>
                 </div>
+
+                @auth
+                    <form action="#" class="mt-6">
+                        <label class="font-bold">Add to album: </label>
+                        <select name="album" class="bg-emerald-500">
+                            <option value="visionne" id="btn-visionne">Visionnés</option>
+                            <option value="envie" id="btn-listeEnvies">Liste d'envies</option>
+                        </select>
+                        <!-- <input type="submit" value="Envoyer" /> -->
+                    </form>
+                @endauth
+
             </div>
         </div>
 

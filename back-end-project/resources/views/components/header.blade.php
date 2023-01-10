@@ -20,7 +20,7 @@
 
         @auth
 
-        <div class=" mt-3 md:mt-0 flex items-center">
+        <div class="mt-3 md:mt-0 flex items-center">
             <a href="{{ url('/albums') }}">
                 <img src="/img/avatar.jpg" class="rounded-full w-8 h-8" alt="logo-user-account">
             </a>
@@ -42,12 +42,13 @@
                 </div>
 
                     @else
-                        <div class="flex items-center">
-                            <a href="{{ route('login') }}">
-                                <img src="/img/log-in-icon.png" class="rounded-full w-8 h-8" alt="icon-log-in">
-                            </a>
-                        </div>
+
                         @if (Route::has('register'))
+                            <div class="flex items-center">
+                                <a href="{{ route('login') }}">
+                                    <img src="/img/log-in-icon.png" class="rounded-full w-8 h-8" alt="icon-log-in">
+                                </a>
+                            </div>
                             <div class="flex items-center">
                                 <a href="{{ route('register') }}" class="text-sm text-gray-700 dark:text-gray-500 underline bg-emerald-500 p-1 sm:p-2">Register</a>
                             </div>

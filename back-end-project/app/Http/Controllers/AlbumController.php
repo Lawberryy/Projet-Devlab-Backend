@@ -61,9 +61,8 @@ class AlbumController extends Controller
      */
     public function show($id)
     {
-
-        return view('albums/display', [
-            'albums' => $id,
+        return view('layouts/album',[
+            'album' => Album::where('id',$id)->get()[0],
         ]);
     }
 

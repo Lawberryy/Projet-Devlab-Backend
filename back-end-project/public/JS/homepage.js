@@ -65,14 +65,14 @@ function displayMovies(data) {
 }
 
 
-const popByDefault = document.getElementById('div-by-default');
+//const popByDefault = document.getElementById('div-by-default');
 const titleByDefault = document.getElementById('title-popular');
 
 searchBar.addEventListener('submit', (e) => {
     e.preventDefault();
     const searchContent = search.value;
 
-    popByDefault.classList.add('hidden');
+    //popByDefault.classList.add('hidden');
     titleByDefault.classList.add('hidden');
 
 

@@ -31,7 +31,7 @@
                 <!-- div qui affiche les films les plus populaires en ce moment -->
                 <div class="col-start-2 col-end-3 px-6 mb-10">
                     <h2 id="title-popular" class="uppercase font-bold text-md md:text-xl text-light-blue-main">Popular movies</h2>
-                    <div id="div-by-default" class="hidden mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+                    <!-- <div id="div-by-default" class="hidden mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
                         @foreach($popular as $popularMovie)
                             <div class="movie_card">
                                 <a href="{{ route('movies.show', $popularMovie['id']) }}"><img src="https://image.tmdb.org/t/p/w500{{$popularMovie['poster_path']}}" alt="movie-poster"/></a>
@@ -45,9 +45,9 @@
                                 </div>
                                 <span class="text-sm">
                                     @foreach($popularMovie['genre_ids'] as $genre)
-                                        {{ $genres->get($genre) }} @if (!$loop->last), @endif
+                                        {{ $genres->get($genre) }} @if (!$loop->last), @endif -->
                                         <!-- la condition if permet d'ajouter une virgule entre chaque genre (loop) -->
-                                    @endforeach
+                                   <!-- @endforeach
                                 </span>
                                 @auth
                                     <form action="#">
@@ -55,13 +55,13 @@
                                         <select name="album" class="bg-emerald-500">
                                             <option value="visionne">Visionnés</option>
                                             <option value="envie">Liste d'envie</option>
-                                        </select>
+                                        </select> -->
                                         <!-- <input type="submit" value="Envoyer" /> -->
-                                    </form>
+                                   <!-- </form>
                                 @endauth
                             </div>
                         @endforeach
-                    </div>
+                    </div> -->
 
                     <!-- div qui contiendra l'affichage des films par recherche -->
                         <div id="titleSearch"></div>
